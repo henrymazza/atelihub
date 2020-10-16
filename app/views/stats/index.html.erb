@@ -1,0 +1,81 @@
+<h1>Atelihub</h1>
+
+<strong><%= Repository.count %> repositories loaded.</strong>
+<div class="progress-bar-wrapper">
+  <div class="progress-bar"
+       style="width:<%= 100 * Repository.count / ENV['TOTAL_REPO'].to_i %>%" >
+    <%= 100 * Repository.count / ENV['TOTAL_REPO'].to_i %>%</div>
+</div>
+
+<% if Repository.count < ENV['TOTAL_REPO'].to_i && Language.count > 0 %>
+  <a href="/">Refresh</a>
+<% end %>
+
+<div class="button-panel">
+  <%= button_to 'Load Data', controller: 'stats', action: 'refresh' %>
+  <%= button_to 'Clear Data', controller: 'stats', action: 'clear' %>
+
+  <div class="notice">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
+  <% flash.clear %>
+</div>
+
+<p>Github's top repositories by a few selectred languages.</p>
+
+<ul>
+<% @languages.each do |lang| %>
+  <li>
+    <h2 class="lang"><%= lang.name %></h2> - <%= lang.updated_at.strftime "%H:%M:%S" %> fresh
+    <ul>
+      <% lang.repositories.each do |repo| %>
+        <li class="repo-info">
+            <img class="owner-avatar" src="<%= repo.owner['avatar_url'] %>">
+            <h3>
+              <%= repo.name %>
+              <small>(<%= repo.details['forks'] %> forks)</small>
+            </h3>
+          <label class="plus-detail">
+            <input type="checkbox">
+            </input>
+            <div class="icon">
+              <span>
+                &#65291;
+              </span>
+            </div>
+            <div class="details">
+              <p><h4>Owner:</h4>
+                <a href="<%= repo.owner['html_url'] %>">
+                  <%= repo.owner['login'] %>
+                </a>
+              </p>
+              <p><h4>Repo URL:</h4>
+                <a href="<%= repo.details['html_url'] %>">
+                  <%= repo.full_name %>
+                </a>
+              </p>
+              <p><h4>Homepage:</h4> <a href="<%= repo.details['homepage']  %>"><%= repo.details['homepage'] %></a></p>
+              <br>
+              <p>
+                <h4>Readme File:</h4>
+                <%= repo.readme['name'] %>
+              </p>
+              <p>
+
+                <h4>Readme:<h4>
+                <div class="readme">
+                  <%= repo.decoded_readme.html_safe  %>
+                </div>
+              </p>
+            </div>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>

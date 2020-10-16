@@ -1,0 +1,140 @@
+// Place all the styles related to the stats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+    font-family: San Francisco, Helvetica, Arial, sans-serif;
+    background-image: linear-gradient(180deg, #DDDDDD, white);
+}
+
+h2.lang {
+    display: inline-block;
+    background-color: white;
+    padding: 7px;
+    margin: 0;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1000;
+}
+
+h3 {
+    margin: 0;
+    height: 35px;
+    line-height: 35px;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 0;
+}
+h4 {
+    display: inline;
+}
+div.notice {
+    color: orange;
+}
+.repo-info {
+    position: relative;
+    list-style: none;
+    line-height: 35px;
+}
+.owner-avatar {
+    border-radius: 50%;
+    width: 35px;
+    border: 2px solid gray;
+}
+form {
+    display: inline-block;
+}
+.button-panel {
+    display: block;
+    padding: 15px;
+}
+input[type=submit] {
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    display: none;
+}
+input[type=checkbox]:hover ~ div.icon:after {
+    content: "More Details...";
+    transform: none;
+    transition: none;
+    display: inline-block;
+    position: relative;
+    top: -15px;
+    left: 15px;
+    font-size: 0.8rem;
+    background-color: gray;
+    color: white;
+    padding: 7px;
+}
+div.icon  {
+    display: inline-block;
+}
+input[type=checkbox] ~ div.icon span {
+    font-size: 1.5rem;
+    color: blue;
+    display: inline-block;
+    transform: rotate(0deg);
+
+    transition: all 1s;
+    cursor: pointer;
+    cursor: hand;
+}
+input[type=checkbox]:checked ~ div.icon span {
+    color: red;
+    transform: rotate(-45deg);
+    transition: all 1s;
+}
+
+input[type=checkbox] ~ div.details {
+    display: none;
+    background-color: white;
+    margin: -15px;
+    padding: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0ms, padding 150ms;
+}
+
+input[type=checkbox]:checked ~ div.details {
+    margin: 0px 25px 15px 35px;
+    border: 2px solid gray;
+    display: block;
+    height: auto;
+    opacity: 1;
+    padding: 15px;
+    transition: opacity 0ms, padding 150ms;
+}
+
+div.readme {
+    border: 1px solid gray;
+    margin: 0px 25px;
+    padding: 5px;
+    height: 30vw;
+    overflow: scroll;
+}
+
+div.details p {
+    display: inline;
+    margin-right: 15px;
+}
+
+.progress-bar-wrapper {
+    height: 25px;
+    width: 300px;
+    border: 3px solid gray;
+    padding: 0;
+}
+
+.progress-bar {
+    background-color: #88DDFF;
+    text-align: right;
+    margin: 0;
+    height: 100%;
+    line-height: 25px;
+}
