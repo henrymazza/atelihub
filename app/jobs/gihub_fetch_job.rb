@@ -19,8 +19,14 @@ class GihubFetchJob < ApplicationJob
                            owner: repo[:owner].to_h,
                            readme: client.readme(repo.full_name).try(:to_h),
                            details: repo.to_h
-      end
 
+        repo_count = Repository.count
+        ActionCable.server.broadcast 'progress_notification_channel',
+                                     content: {
+                                       progress: (repo_count / ENV['TOTAL_REPO'].to_f * 100).to_i,
+                                       repositories: repo_count
+                                     }
+      end
     rescue StandardError => e
       Rails.logger.info "[ERROR]: #{e.message}"
       raise
