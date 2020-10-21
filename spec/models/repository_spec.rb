@@ -10,10 +10,26 @@ RSpec.describe Repository, type: :model do
   end
 
   context 'when language is filled' do
-    subject(:repository) { Repository.new language: Language.new(name: 'lang') }
+    subject(:repository) { create :repository }
 
     it 'is a valid record' do
       expect(repository.valid?).to be true
+    end
+  end
+
+  context 'when owner is missing' do
+    subject(:repository) { build :repository, owner: nil }
+
+    it 'is not a valid record' do
+      expect(repository.valid?).to be false
+    end
+  end
+
+  context 'when readme is missing' do
+    subject(:repository) { build :repository, readme: nil }
+
+    it 'is not a valid record' do
+      expect(repository.valid?).to be false
     end
   end
 end

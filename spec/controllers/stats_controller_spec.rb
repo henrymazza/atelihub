@@ -18,7 +18,7 @@ RSpec.describe StatsController, type: :controller do
     end
 
     it 'deletes all repositories' do
-      expect(Language.count).to be 0
+      expect(Repository.count).to be 0
     end
   end
 
