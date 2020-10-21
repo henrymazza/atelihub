@@ -1,6 +1,9 @@
 require 'octokit'
 
 class GihubFetchJob < ApplicationJob
+  include SuckerPunch::Job
+  workers 2
+
   queue_as :default
 
   def perform(lang)
@@ -9,16 +12,18 @@ class GihubFetchJob < ApplicationJob
 
     top_repos = client.search_repositories("language:#{lang.name}")[:items]
     top_repos.each do |repo|
-      Repository.create! name: repo.name,
-                         full_name: repo.full_name,
-                         language: lang,
-                         owner: repo[:owner].to_h,
-                         readme: client.readme(repo.full_name).to_h,
-                         details: repo.to_h
+      ActiveRecord::Base.connection_pool.with_connection do
+        Repository.create! name: repo.name,
+                           full_name: repo.full_name,
+                           language: lang,
+                           owner: repo[:owner].to_h,
+                           readme: client.readme(repo.full_name).try(:to_h),
+                           details: repo.to_h
+      end
 
     rescue StandardError => e
-      # FIXME
-      # binding.pry
+      Rails.logger.info "[ERROR]: #{e.message}"
+      raise
     end
   end
 end

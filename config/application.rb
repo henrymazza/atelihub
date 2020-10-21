@@ -22,5 +22,7 @@ module Atelihub
 
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = 'Brasilia'
+
+    config.active_job.queue_adapter = :sucker_punch
   end
 end

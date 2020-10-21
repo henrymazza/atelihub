@@ -17,7 +17,7 @@ RSpec.describe 'stats/index.html.erb', type: :view do
     expect(rendered).to match(Regexp.new(names, Regexp::MULTILINE))
   end
 
-  it 'displays all repositories name' do
+  it 'displays all repository names' do
     render
 
     names = Repository.all.map(&:name).map do |repo|

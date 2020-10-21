@@ -10,11 +10,9 @@ class StatsController < ApplicationController
     Language.destroy_all
 
     ENV['LANGS'].split(',').map(&:strip).each do |lang_name|
-      l = Language.create name: lang_name
-      GihubFetchJob.perform_later(l)
+      language = Language.create name: lang_name
+      GihubFetchJob.perform_async(language)
     end
-
-    sleep 2 # avoid running out of connections in production
 
     flash[:alert] = 'Repositories refresh scheduled.'
     redirect_to action: :index

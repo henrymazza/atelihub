@@ -83,5 +83,5 @@ production:
   database: atelihub_production
   username: atelihub
   password: <%= ENV['ATELIHUB_DATABASE_PASSWORD'] %>
-  pool: 10
-  timeout: 5000
+  pool: 2
+  timeout: 15000

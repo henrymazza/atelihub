@@ -68,7 +68,7 @@
 
                 <h4>Readme:<h4>
                 <div class="readme">
-                  <%= repo.decoded_readme.html_safe  %>
+                  <%= decode_readme(repo.readme) %>
                 </div>
               </p>
             </div>

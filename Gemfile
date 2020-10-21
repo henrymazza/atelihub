@@ -74,10 +74,10 @@ end
 gem 'octokit', '~> 4.0'
 gem 'redcarpet'
 
+gem 'sucker_punch', '~> 2.0'
 gem 'vcr'
 gem 'webmock'
 
 group :production do
   gem 'redis', '~> 4.0'
-  gem 'sidekiq'
 end
