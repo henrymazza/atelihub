@@ -11,7 +11,7 @@ Construa uma nova aplicação, utilizando o framework de sua preferência (Rails
 - [X] ~rails new -d postgres atelihub~ and ~rails db:create~ and all the sorcery
 - [X] Fix the master/main issue in git repo
 ** Latest Stuff
-- [ ] make a decent README
+- [X] make a decent README
 - [X] No small named vars
 - [X] Use sidekiq/other for throttling, no sleep!
 - [X] NO sleep on code

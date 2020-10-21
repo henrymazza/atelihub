@@ -9,7 +9,7 @@ module StatsHelper
     markdown.render(
       sanitize(
         Base64.decode64(readme['content'] || ''),
-        tags: %w[p li ul b strong em a img pre],
+        tags: %w[p li ul b strong em a pre],
         attributes: %w[href src]
       )
     ).html_safe
