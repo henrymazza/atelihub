@@ -10,7 +10,7 @@ RSpec.describe Repository, type: :model do
   end
 
   context 'when language is filled' do
-    subject(:repository) { create :repository }
+    subject(:repository) { build :repository }
 
     it 'is a valid record' do
       expect(repository.valid?).to be true

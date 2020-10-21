@@ -1,80 +1,32 @@
 * Atelihub
+
 Source URL: https://github.com/ateliware/dev-hiring-challenge
+
 Deploy to: https://atelihub.herokuapp.com
+
 Public Repo: https://github.com/henrymazza/atelihub
 
 #+begin_quote
 Construa uma nova aplicação, utilizando o framework de sua preferência (Rails, ASP.NET, Phoenix, etc), a qual deverá conectar na API do GitHub e disponibilizar as seguintes funcionalidades:
 #+end_quote
-- [X] Install current Ruby: 2.7.2 is the current stable
-- [X] Check current Rails: 6.0.3.4
-- [X] ~rails new -d postgres atelihub~ and ~rails db:create~ and all the sorcery
-- [X] Fix the master/main issue in git repo
-
-** Bugs
-- [X] Out of db connections on production / pooling?
-
-** Specs
+- [X] Ruby: 2.7.2
+- [X] Rails: 6.0.3.4
+- [X] Postgres 13.0
+- [ ] RSpec
+- [ ] Octokit Github API Gem
 - [X] VCR for API recording
 - [X] FactoryBot
+- [X] Dotenv
+- [ ] Deploy to Heroku
 
-** Postgres
-- [X] Install Postgres 13.0 (which is easy enough)
-- [X] +... or better yet, use Docker+
-- [X] add authentication info to ~dotenv~ (use default roles)
-- [X] How to config postgres on Heroku?
-
-
-** GitHub API
-- [X] GitHub needs API keys, use ~dotenv~
-- [X] ActiveJob for API fetching
-  Kind "Update fired at 11:30 UTC"
-- [X] Octokit
-  #+begin_quote
-  The line of code that's the fastest to write, that never breaks, that doesn't need maintenance, is the line you never had to write.
-  -- SJ
-  #+end_quote
-  #+begin_src ruby
-    client = Octokit::Client.new(:client_id => "yyyyyyyyyyyyyyyyyyyy", client_secret: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-    client.search_repositories('language:ruby')[:items].map(&:name)
-  #+end_src
-  - [X] Application Authentication
-  - [X] Test octokit mocks?
-
-** Deploy
-Heroku is great. Deploy basically made itself.
-- [X] Create Heroku Account
-- [X] Need to use _pipelines_ now? [ probably not ]
-- [X] what's the deal with setting ENV VARS or passwords for the app? [ heroku panel ]
-
-** Application
-*** Frontend: HTML/ERB at first
-
-*** Dotenv
-- [X] Should not be used in production, find a way to set ENV VARS with Heroku [ Heroku's panel ]
-
-*** DONE "Botão para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;" [2/2]
-CLOSED: [2020-10-17 Sat 19:39]
-This button looks a lot like a refresh button that fires a job. Like so: the
-landing page shows database content, you start a refresh process to fetch new
-data from github.
-
-- [X] We need a github API POC
-- [X] Make some ActiveJobs and use ActiveJob RSpec matchers and so on
+*** DONE "Botão para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;"
 
 *** DONE Listar os repositórios encontrados;
 CLOSED: [2020-10-17 Sat 19:39]
 It looks a lot with fetch database and make presentation
 
-*** Visualizar os detalhes de cada repositório.
-Looks like it's one more call to Github API, need POC and to see docs.
-- [X] Owner
-- [X] Readme
-
-*** What to test?
-- [X] Refresh Button should update database with up-to-date info
-- [X] ActiveJob Specs for the github api interface
-- [X] Presentation Page matches Database Contents
+*** DONE Visualizar os detalhes de cada repositório.
+CLOSED: [2020-10-21 Wed 16:07]
 
 *** Alguns requisitos:
 - [X] Deve ser uma aplicação totalmente nova;
@@ -84,10 +36,3 @@ Looks like it's one more call to Github API, need POC and to see docs.
 - [X] O deploy deve ser realizado, preferencialmente, no Heroku ou no Azure;
 - [X] A aplicação precisa ter TESTES AUTOMATIZADOS. [ RSpec enough? ]
 - [X] Quando terminar, faça um Pull Request neste repo e avise-nos por email.
-
-** Bonus Stuff
-What we won't care unless everything else is done
-*** Vue.js frontend (what about tests?)
-*** Authentication for the application itself?
-*** Github Actions?
-*** Job Status

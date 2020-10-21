@@ -11,7 +11,12 @@ class StatsController < ApplicationController
 
     ENV['LANGS'].split(',').map(&:strip).each do |lang_name|
       language = Language.create name: lang_name
-      GihubFetchJob.perform_async(language)
+
+      if Rails.env.test?
+        GihubFetchJob.perform_later(language)
+      else
+        GihubFetchJob.perform_async(language)
+      end
     end
 
     flash[:alert] = 'Repositories refresh scheduled.'

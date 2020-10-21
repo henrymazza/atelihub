@@ -8,7 +8,7 @@ module StatsHelper
 
     markdown.render(
       sanitize(
-        Base64.decode64(readme['content']),
+        Base64.decode64(readme['content'] || ''),
         tags: %w[p li ul b strong em a img pre],
         attributes: %w[href src]
       )

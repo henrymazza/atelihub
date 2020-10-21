@@ -7,7 +7,7 @@ RSpec.describe 'stats/index.html.erb', type: :view do
     assign(:languages, Language.order('name ASC').all)
   end
 
-  it 'displays all languages names' do
+  it 'displays all language names' do
     render
 
     names = Language.all.map(&:name).map do |lang|

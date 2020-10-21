@@ -24,6 +24,7 @@ RSpec.describe StatsController, type: :controller do
 
   describe 'POST #refresh' do
     it 'enqueues GithubFetchJob' do
+      ActiveJob::Base.queue_adapter = :test
       expect { post(:refresh) }.to have_enqueued_job(GihubFetchJob)
     end
   end
