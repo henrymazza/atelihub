@@ -6,33 +6,35 @@ Deploy to: https://atelihub.herokuapp.com
 
 Public Repo: https://github.com/henrymazza/atelihub
 
+- Ruby: 2.7.2
+- Rails: 6.0.3.4
+- Postgres 13.0
+- RSpec
+- Octokit Github API Gem
+- VCR for API recording
+- FactoryBot
+- Dotenv
+- Deploy to Heroku
+
 #+begin_quote
 Construa uma nova aplicação, utilizando o framework de sua preferência (Rails, ASP.NET, Phoenix, etc), a qual deverá conectar na API do GitHub e disponibilizar as seguintes funcionalidades:
 #+end_quote
-- [X] Ruby: 2.7.2
-- [X] Rails: 6.0.3.4
-- [X] Postgres 13.0
-- [ ] RSpec
-- [ ] Octokit Github API Gem
-- [X] VCR for API recording
-- [X] FactoryBot
-- [X] Dotenv
-- [ ] Deploy to Heroku
 
-*** DONE "Botão para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;"
+**** Requisitos:
 
-*** DONE Listar os repositórios encontrados;
+***** DONE "Botão para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;"
+
+***** DONE Listar os repositórios encontrados;
 CLOSED: [2020-10-17 Sat 19:39]
-It looks a lot with fetch database and make presentation
 
-*** DONE Visualizar os detalhes de cada repositório.
+***** DONE Visualizar os detalhes de cada repositório.
 CLOSED: [2020-10-21 Wed 16:07]
 
-*** Alguns requisitos:
+***** Alguns requisitos:
 - [X] Deve ser uma aplicação totalmente nova;
 - [X] A solução deve estar em um repositório público do GitHub;
 - [X] A aplicação deve armazenar as informações encontradas;
 - [X] Utilizar Postgres, MySQL ou SQL Server;
 - [X] O deploy deve ser realizado, preferencialmente, no Heroku ou no Azure;
-- [X] A aplicação precisa ter TESTES AUTOMATIZADOS. [ RSpec enough? ]
+- [X] A aplicação precisa ter TESTES AUTOMATIZADOS.
 - [X] Quando terminar, faça um Pull Request neste repo e avise-nos por email.
