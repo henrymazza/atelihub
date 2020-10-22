@@ -67,6 +67,7 @@ group :development, :test do
   gem 'rubocop-faker'
   gem 'rubocop-rspec'
 
+  gem 'action-cable-testing'
   gem 'pry'
   gem 'pry-byebug'
 end
